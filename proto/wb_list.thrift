@@ -36,7 +36,6 @@ service WbListService {
     /**
     * Проверяет существование в списке
     * если списка не существует то выбрасывается ListNotFound
-    * если запись в списке не найдена то возвращается пустой список
     **/
     bool isExist(1: ID party_id, 2: ID shop_id, 3: ID list_name, 4: Value value)
         throws (1: ListNotFound ex1)
@@ -58,6 +57,7 @@ service WbListService {
     /**
     * Постраничное получение списка
     * если списка не существует то выбрасывается ListNotFound
+    * если запись в списке не найдена то возвращается пустой список
     **/
     InfoStorage getByPage(1: ID party_id, 2: ID shop_id, 3: ID list_name, 4: i32 offset 5: i32 size)
         throws (1: ListNotFound ex1)
