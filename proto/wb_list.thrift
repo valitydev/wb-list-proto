@@ -15,8 +15,7 @@ enum Command {
     DELETE
 }
 
-// Данная структура используется на уровне сервиса для обновления списков через KAFKA
-struct ChangeCommand {
+struct Row {
     // ID party
     1: required ID party_id
     // ID  магазина
@@ -25,8 +24,27 @@ struct ChangeCommand {
     3: required ID list_name
     // Значение в списке
     4: required Value value
+}
+
+// Данная структура используется на уровне сервиса для обновления списков через KAFKA
+struct ChangeCommand {
+    // Запись в списке
+    1: required Row row
     // Команда на изменение
-    5: required Command command
+    2: required Command command
+}
+
+enum EventType {
+    CREATED
+    DELETED
+}
+
+// Данная структура используется для EventSink для обновления оффлайн части сервиса списков через KAFKA
+struct Event {
+    // Запись в списке
+    1: required Row row
+    // Тип события
+    2: required EventType eventType
 }
 
 /**
