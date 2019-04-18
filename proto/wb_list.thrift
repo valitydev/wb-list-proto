@@ -63,7 +63,7 @@ service WbListService {
     * Проверяет существование в списке
     * если списка не существует то выбрасывается ListNotFound
     **/
-    bool isExist(1: ID party_id, 2: ID shop_id, 3: ID list_name, 4: Value value)
+    bool isExist(1: Row row)
         throws (1: ListNotFound ex1)
 
 }
