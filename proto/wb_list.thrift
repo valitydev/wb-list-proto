@@ -15,15 +15,22 @@ enum Command {
     DELETE
 }
 
+enum ListType {
+    black,
+    white
+}
+
 struct Row {
     // ID party
     1: required ID party_id
     // ID  магазина
     2: required ID shop_id
+    // Тип списка
+    3: required ListType list_type
     // Идентификатор списка
-    3: required ID list_name
+    4: required ID list_name
     // Значение в списке
-    4: required Value value
+    5: required Value value
 }
 
 // Данная структура используется на уровне сервиса для обновления списков через KAFKA
