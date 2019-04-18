@@ -16,7 +16,7 @@ enum Command {
 }
 
 enum ListType {
-    black,
+    black
     white
 }
 
