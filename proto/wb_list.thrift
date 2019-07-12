@@ -66,4 +66,25 @@ service WbListService {
     bool isExist(1: Row row)
         throws (1: ListNotFound ex1)
 
+    /**
+    * Проверяет существование в списке  всех записей
+    * если списка не существует то выбрасывается ListNotFound
+    **/
+    bool isAllExist(1: list<Row> row)
+        throws (1: ListNotFound ex1)
+
+    /**
+    * Проверяет существование хотя бы одной записи
+    * если списка не существует то выбрасывается ListNotFound
+    **/
+    bool isAnyExist(1: list<Row> row)
+        throws (1: ListNotFound ex1)
+
+    /**
+    * Проверяет, что нет ни одной записи в списках
+    * если списка не существует то выбрасывается ListNotFound
+    **/
+    bool isNotOneExist(1: list<Row> row)
+        throws (1: ListNotFound ex1)
+
 }
