@@ -8,6 +8,14 @@ namespace erlang wb_list
 typedef string ID
 typedef string Value
 
+/**
+ * Отметка во времени согласно RFC 3339.
+ *
+ * Строка должна содержать дату и время в UTC в следующем формате:
+ * `2016-03-22T06:12:27Z`.
+ */
+typedef string Timestamp
+
 exception ListNotFound {}
 
 enum Command {
@@ -22,15 +30,17 @@ enum ListType {
 
 struct Row {
     // ID party
-    1: required ID party_id
+    1: optional ID party_id
     // ID  магазина
-    2: required ID shop_id
+    2: optional ID shop_id
     // Тип списка
     3: required ListType list_type
     // Идентификатор списка
     4: required ID list_name
     // Значение в списке
     5: required Value value
+    // Время жизни в списке
+    6: optional Timestamp time_to_live
 }
 
 // Данная структура используется на уровне сервиса для обновления списков через KAFKA
