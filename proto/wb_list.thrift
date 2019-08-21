@@ -27,6 +27,7 @@ enum Command {
 enum ListType {
     black
     white
+    grey
 }
 
 struct Row {
