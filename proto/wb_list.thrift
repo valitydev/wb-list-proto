@@ -7,6 +7,7 @@ namespace erlang wb_list
 
 typedef string ID
 typedef string Value
+typedef i64 Count
 
 /**
  * Отметка во времени согласно RFC 3339.
@@ -39,8 +40,21 @@ struct Row {
     4: required ID list_name
     // Значение в списке
     5: required Value value
+    // Дополнительная информация
+    6: optional RowInfo row_info
+}
+
+union RowInfo {
+    1: CountInfo count_info
+}
+
+struct CountInfo {
+    // Количество вызовов между start_count_time и time_to_live
+    1: required Count count
     // Время жизни в списке
-    6: optional Timestamp time_to_live
+    2: required Timestamp time_to_live
+    // Время начала подсчета
+    3: optional Timestamp start_count_time
 }
 
 // Данная структура используется на уровне сервиса для обновления списков через KAFKA
@@ -95,6 +109,13 @@ service WbListService {
     * если списка не существует то выбрасывается ListNotFound
     **/
     bool isNotOneExist(1: list<Row> row)
+        throws (1: ListNotFound ex1)
+
+    /**
+    * Возвращает информацию по записи в списке
+    * если списка не существует то выбрасывается ListNotFound
+    **/
+    RowInfo getRowInfo(1: list<Row> row)
         throws (1: ListNotFound ex1)
 
 }
