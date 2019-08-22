@@ -45,6 +45,10 @@ struct Row {
     6: optional RowInfo row_info
 }
 
+struct Result {
+    1: optional RowInfo row_info
+}
+
 union RowInfo {
     1: CountInfo count_info
 }
@@ -116,7 +120,7 @@ service WbListService {
     * Возвращает информацию по записи в списке
     * если списка не существует то выбрасывается ListNotFound
     **/
-    RowInfo getRowInfo(1: Row row)
+    Result getRowInfo(1: Row row)
         throws (1: ListNotFound ex1)
 
 }
