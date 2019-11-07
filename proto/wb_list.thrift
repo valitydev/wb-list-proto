@@ -28,21 +28,20 @@ enum ListType {
     black
     white
     grey
+    naming
 }
 
 struct Row {
-    // ID party
-    1: optional ID party_id
-    // ID  магазина
-    2: optional ID shop_id
+    // ID
+    1: optional IdInfo id
     // Тип списка
-    3: required ListType list_type
+    2: required ListType list_type
     // Идентификатор списка
-    4: required ID list_name
+    3: required ID list_name
     // Значение в списке
-    5: required Value value
+    4: required Value value
     // Дополнительная информация
-    6: optional RowInfo row_info
+    5: optional RowInfo row_info
 }
 
 struct Result {
@@ -73,6 +72,23 @@ struct ChangeCommand {
 enum EventType {
     CREATED
     DELETED
+}
+
+union IdInfo {
+    1: PaymentId payment_id
+    2: P2pId p2p_id
+}
+
+struct PaymentId {
+    // ID party
+    1: optional ID party_id
+    // ID  магазина
+    2: optional ID shop_id
+}
+
+struct P2pId {
+    // ID party
+    1: optional ID identity_id
 }
 
 // Данная структура используется для EventSink для обновления оффлайн части сервиса списков через KAFKA
