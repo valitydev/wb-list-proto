@@ -33,7 +33,7 @@ enum ListType {
 
 struct Row {
     // ID
-    1: optional IdInfo id
+    1: required IdInfo id
     // Тип списка
     2: required ListType list_type
     // Идентификатор списка
