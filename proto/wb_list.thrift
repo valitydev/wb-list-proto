@@ -32,16 +32,24 @@ enum ListType {
 }
 
 struct Row {
-    // ID
-    1: required IdInfo id
+
+    // ID party
+    1: optional ID party_id
+    // ID  магазина
+    2: optional ID shop_id
+
     // Тип списка
-    2: required ListType list_type
+    3: required ListType list_type
     // Идентификатор списка
-    3: required ID list_name
+    4: required ID list_name
     // Значение в списке
-    4: required Value value
+    5: required Value value
     // Дополнительная информация
-    5: optional RowInfo row_info
+    6: optional RowInfo row_info
+
+    // ID
+    7: optional IdInfo id
+
 }
 
 struct Result {
