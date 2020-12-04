@@ -75,6 +75,13 @@ struct ChangeCommand {
     1: required Row row
     // Команда на изменение
     2: required Command command
+    3: optional Timestamp command_time
+    4: optional UserInfo user_info
+}
+
+// Модель пользователя
+struct UserInfo {
+    1: required ID user_id
 }
 
 enum EventType {
