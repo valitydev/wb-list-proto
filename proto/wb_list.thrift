@@ -111,7 +111,9 @@ struct Event {
     // Запись в списке
     1: required Row row
     // Тип события
-    2: required EventType eventType
+    2: required EventType event_type
+    3: optional Timestamp command_time
+    4: optional UserInfo user_info
 }
 
 /**
