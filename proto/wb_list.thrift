@@ -91,6 +91,8 @@ enum EventType {
 
 union IdInfo {
     1: PaymentId payment_id
+
+    // DEPRECATED and may not be supported
     2: P2pId p2p_id
 }
 
@@ -101,6 +103,7 @@ struct PaymentId {
     2: optional ID shop_id
 }
 
+// DEPRECATED and may not be supported
 struct P2pId {
     // ID party
     1: optional ID identity_id
