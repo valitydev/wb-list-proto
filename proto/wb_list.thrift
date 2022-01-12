@@ -2,7 +2,7 @@
  * Сервис управление списками.
  */
 
-namespace java com.rbkmoney.damsel.wb_list
+namespace java dev.vality.damsel.wb_list
 namespace erlang wb_list
 
 typedef string ID
